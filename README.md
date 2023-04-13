@@ -1,10 +1,14 @@
 # Project Title
 
-Movie app based on tutorial for learning purposes.
+Movie app based on tutorial for learning purposes. During this project I learned more about:
+* Using API:s and more specifically the OMDB API
+* React application in general
+* React hooks
+* Local storage for desktop applications
 
 ## Description
 
-A React app using the OMDB API displaying movies. CSS Framework is Bootstrap.
+A React app using the [OMDB API](https://www.omdbapi.com/) displaying movies. CSS Framework is Bootstrap.
 
 ## Getting Started
 
@@ -41,13 +45,11 @@ npm run build
 ## Authors
 
 Based on the tutorial of Chris Blakey.
-This repository belongs to Ktarina Lejonlid.
+This repository belongs to Katarina Lejonlid.
 
 ## Acknowledgments
 
-Inspiration, code snippets, etc.
+This awesome tutorial from Chris Blakey and the repository. Check it out!
 * [React movie app tutorial](https://www.freecodecamp.org/news/react-movie-app-tutorial/)
 * [Chris Blakey repository](https://github.com/chrisblakely01/react-movie-app/blob/main/src/components/MovieList.js)
-* [dbader](https://github.com/dbader/readme-template)
-* [zenorocha](https://gist.github.com/zenorocha/4526327)
-* [fvcproductions](https://gist.github.com/fvcproductions/1bfc2d4aecb01a834b46)
+* [OMDB API site](https://www.omdbapi.com/)

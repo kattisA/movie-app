@@ -10,7 +10,8 @@ import RemoveFavourites from "./components/RemoveFavourites";
 const App = () => {
     const [movies, setMovies] = useState([]);
     const [searchValue, setSearchValue] = useState('');
-    const [favourites, setFavourites] = useState([])
+    const [favouriteMovies, setFavouriteMovies] = useState();
+    console.log(favouriteMovies)
 
     const getMovieRequest = async (searchValue) => {
         const url = `http://www.omdbapi.com/?s=${searchValue}&apikey=5a0f2c9d`;
@@ -23,22 +24,48 @@ const App = () => {
         }
     }
 
-    const addFavouriteMovie = (movie) => {
-        const newFavouriteList = [...favourites, movie];
-        setFavourites(newFavouriteList);
-    }
-
-    const removeFavouriteMovie = (movie) => {
-        const newFavouriteList = favourites.filter(
-            (favourite) => favourite.imdbID !== movie.imdbID
-        );
-
-        setFavourites(newFavouriteList);
-    };
-
     useEffect(() => {
         getMovieRequest(searchValue);
     }, [searchValue]);
+
+    useEffect(() => {
+        const movieFavourites = JSON.parse(
+            localStorage.getItem('movie-favourites'));
+        //console.log(movieFavourites)
+
+        if (movieFavourites) {
+            let uniqueMovieFavourites = movieFavourites.filter(
+                (value, index, array) => array.findIndex(
+                    (v) => v.imdbID === value.imdbID) === index);
+            //console.log(uniqueMovieFavourites)
+            setFavouriteMovies(uniqueMovieFavourites);
+            console.log(favouriteMovies)
+        }
+    }, []);
+
+    const saveToLocalStorage = (items) => {
+        localStorage.setItem('movie-favourites', JSON.stringify(items));
+    }
+
+    const addFavouriteMovie = (movie) => {
+
+        let newFavouriteList = [...favouriteMovies, movie];
+        let uniqueList = newFavouriteList.filter(
+            (value, index, array) => array.findIndex(
+                (v) => v.imdbID === value.imdbID) === index);
+        setFavouriteMovies(uniqueList);
+        saveToLocalStorage(uniqueList);
+
+    }
+
+    const removeFavouriteMovie = (movie) => {
+        const newFavouriteList = favouriteMovies.filter(
+            (favourite) => favourite.imdbID !== movie.imdbID
+        );
+
+        setFavouriteMovies(newFavouriteList);
+        saveToLocalStorage(newFavouriteList);
+    };
 
     return (
         <div className='container-fluid movie-app'>
@@ -56,7 +83,7 @@ const App = () => {
                 <MovieListHeading heading="Favourites"/>
             </div>
             <div className="row">
-                <MovieList movies={favourites}
+                <MovieList movies={favouriteMovies}
                            favouriteComponent={RemoveFavourites}
                            handleFavouritesClick={removeFavouriteMovie}
                 />
