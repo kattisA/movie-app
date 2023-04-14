@@ -10,7 +10,7 @@ import RemoveFavourites from "./components/RemoveFavourites";
 const App = () => {
     const [movies, setMovies] = useState([]);
     const [searchValue, setSearchValue] = useState('');
-    const [favouriteMovies, setFavouriteMovies] = useState();
+    const [favouriteMovies, setFavouriteMovies] = useState([]);
     console.log(favouriteMovies)
 
     const getMovieRequest = async (searchValue) => {
@@ -31,15 +31,12 @@ const App = () => {
     useEffect(() => {
         const movieFavourites = JSON.parse(
             localStorage.getItem('movie-favourites'));
-        //console.log(movieFavourites)
 
         if (movieFavourites) {
             let uniqueMovieFavourites = movieFavourites.filter(
                 (value, index, array) => array.findIndex(
                     (v) => v.imdbID === value.imdbID) === index);
-            //console.log(uniqueMovieFavourites)
             setFavouriteMovies(uniqueMovieFavourites);
-            console.log(favouriteMovies)
         }
     }, []);
 
