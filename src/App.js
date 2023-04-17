@@ -64,7 +64,7 @@ const App = () => {
     };
 
     return (
-        <div className='container-fluid movie-app'>
+        <div className='container-fluid movie-app' role="main">
             <div className="row d-flex align-items-center mt-4 mb-4">
                 <div className="col">
                     <h1>Movies</h1>
