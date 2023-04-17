@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import MovieList from "./components/MovieList";
-import MovieListHeading from './components/MovieListHeading';
 import SearchBox from "./components/SearchBox";
 import AddToFavourites from "./components/AddToFavourites";
 import RemoveFavourites from "./components/RemoveFavourites";
@@ -67,7 +66,9 @@ const App = () => {
     return (
         <div className='container-fluid movie-app'>
             <div className="row d-flex align-items-center mt-4 mb-4">
-                <MovieListHeading heading='Movies'/>
+                <div className="col">
+                    <h1>Movies</h1>
+                </div>
                 <SearchBox searchValue={searchValue} setSearchValue={setSearchValue}/>
             </div>
             <div className='row'>
@@ -77,7 +78,9 @@ const App = () => {
                 />
             </div>
             <div className="row d-flex align-items-center mt-4 mb-4">
-                <MovieListHeading heading="Favourites"/>
+                <div className="col">
+                    <h2>Favourites</h2>
+                </div>
             </div>
             <div className="row">
                 <MovieList movies={favouriteMovies}
