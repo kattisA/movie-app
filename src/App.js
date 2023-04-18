@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import MovieList from "./components/MovieList";
-import SearchBox from "./components/SearchBox";
+import SearchBar from "./components/SearchBar/SearchBar";
 import AddToFavourites from "./components/AddToFavourites";
 import RemoveFavourites from "./components/RemoveFavourites";
 
@@ -10,7 +10,6 @@ const App = () => {
     const [movies, setMovies] = useState([]);
     const [searchValue, setSearchValue] = useState('');
     const [favouriteMovies, setFavouriteMovies] = useState([]);
-    console.log(favouriteMovies)
 
     const getMovieRequest = async (searchValue) => {
         const url = `http://www.omdbapi.com/?s=${searchValue}&apikey=5a0f2c9d`;
@@ -69,7 +68,7 @@ const App = () => {
                 <div className="col">
                     <h1>Movies</h1>
                 </div>
-                <SearchBox searchValue={searchValue} setSearchValue={setSearchValue}/>
+                <SearchBar searchValue={searchValue} setSearchValue={setSearchValue}/>
             </div>
             <div className='row'>
                 <MovieList movies={movies}
