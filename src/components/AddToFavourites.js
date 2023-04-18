@@ -9,7 +9,7 @@ const AddToFavourites = () => {
             <svg xmlns="http://www.w3.org/2000/svg"
                  width="1rem"
                  height="1rem"
-                 fill="purple"
+                 fill="#ff5352"
                  className="bi bi-heart-fill"
                  viewBox="0 0 16 16"
             >
