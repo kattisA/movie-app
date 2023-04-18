@@ -1,6 +1,6 @@
 import React from "react";
 
-const AddToFavourites = () => {
+const AddToFavourites = (title) => {
     return (
         <>
             <span className="mr-2">
