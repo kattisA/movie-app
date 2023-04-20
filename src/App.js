@@ -3,8 +3,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import MovieList from "./components/MovieList";
 import SearchBar from "./components/SearchBar/SearchBar";
-import AddToFavourites from "./components/AddToFavourites";
-import RemoveFavourites from "./components/RemoveFavourites";
 
 const App = () => {
     const [movies, setMovies] = useState([]);
@@ -42,25 +40,27 @@ const App = () => {
         localStorage.setItem('movie-favourites', JSON.stringify(items));
     }
 
-    const addFavouriteMovie = (movie) => {
-
-        let newFavouriteList = [...favouriteMovies, movie];
-        let uniqueList = newFavouriteList.filter(
-            (value, index, array) => array.findIndex(
-                (v) => v.imdbID === value.imdbID) === index);
-        setFavouriteMovies(uniqueList);
-        saveToLocalStorage(uniqueList);
-
+    function setFavouriteAndSave(list) {
+        setFavouriteMovies(list);
+        saveToLocalStorage(list);
     }
 
-    const removeFavouriteMovie = (movie) => {
-        const newFavouriteList = favouriteMovies.filter(
-            (favourite) => favourite.imdbID !== movie.imdbID
-        );
+    const toggleFavouriteMovie = (movie) => {
+        const isFavourite = !!favouriteMovies?.some(m => m.imdbID === movie.imdbID);
+        if(isFavourite){
+            const newFavouriteList = favouriteMovies.filter(
+                (favourite) => favourite.imdbID !== movie.imdbID
+            );
 
-        setFavouriteMovies(newFavouriteList);
-        saveToLocalStorage(newFavouriteList);
-    };
+            setFavouriteAndSave(newFavouriteList);
+        } else {
+            let newFavouriteList = [...favouriteMovies, movie];
+            let uniqueList = newFavouriteList.filter(
+                (value, index, array) => array.findIndex(
+                    (v) => v.imdbID === value.imdbID) === index);
+            setFavouriteAndSave(uniqueList);
+        }
+    }
 
     return (
         <div className='container-fluid movie-app' role="main">
@@ -72,8 +72,8 @@ const App = () => {
             </div>
             <div className='row'>
                 <MovieList movies={movies}
-                           favouriteComponent={AddToFavourites}
-                           handleFavouritesClick={addFavouriteMovie}
+                           favouriteMovies={favouriteMovies}
+                           handleFavouritesClick={toggleFavouriteMovie}
                 />
             </div>
             <div className="row d-flex align-items-center mt-4 mb-4">
@@ -83,8 +83,8 @@ const App = () => {
             </div>
             <div className="row">
                 <MovieList movies={favouriteMovies}
-                           favouriteComponent={RemoveFavourites}
-                           handleFavouritesClick={removeFavouriteMovie}
+                           favouriteMovies={favouriteMovies}
+                           handleFavouritesClick={toggleFavouriteMovie}
                 />
             </div>
         </div>
