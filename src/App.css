@@ -1,5 +1,7 @@
+/* 331179
+ 793199*/
 body {
-    background: #141414;
+    background: linear-gradient(110deg, #331179 60%, #793199 60%);
     color: #ffffff;
 }
 
