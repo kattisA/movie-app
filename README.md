@@ -8,7 +8,10 @@ Movie app based on tutorial for learning purposes. During this project I learned
 
 ## Description
 
-A React app using the [OMDB API](https://www.omdbapi.com/) displaying movies. CSS Framework is Bootstrap.
+A React app using the [OMDB API](https://www.omdbapi.com/) displaying movies. CSS Framework is Bootstrap. 
+After finishing the tutorial I have restructured the code and added values for accessibility improvement. 
+I have improved functionality so favourites doesn't include duplicates. I added 
+the movie title on the poster overlay.
 
 ## Getting Started
 
