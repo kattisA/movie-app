@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import MovieList from "./components/MovieList";
+import MovieList from "./components/MovieList/MovieList";
 import SearchBar from "./components/SearchBar/SearchBar";
 
 const App = () => {
