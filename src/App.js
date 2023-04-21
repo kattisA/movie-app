@@ -87,6 +87,9 @@ const App = () => {
                            handleFavouritesClick={toggleFavouriteMovie}
                 />
             </div>
+            <div className="row d-flex justify-content-center">
+                <a href="https://github.com/kattisA">Created by Kattis</a>
+            </div>
         </div>
     );
 };
