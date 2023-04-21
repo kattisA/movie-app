@@ -2,7 +2,32 @@
  793199*/
 body {
     background: linear-gradient(110deg, #331179 60%, #793199 60%);
-    color: #ffffff;
+    color: #F9F6EE;
+}
+
+a {
+    color: #F9F6EE;
+}
+
+a:hover {
+    color: #B0A8B9;
+}
+
+/* Scrollbar customised */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #634E7D80;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #7C7484;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #4B4453;
 }
 
 .movie-app > .row {
