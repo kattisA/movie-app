@@ -9,7 +9,11 @@ const MovieList = (props) => {
         <>
             {props.movies?.map((movie, index) => (
                 <div className='image-container d-flex justify-content-start m-3'>
-                    <img src={movie.Poster} alt={movie.Title}></img>
+                    {movie.Poster !== "N/A" ?
+                        <img src={movie.Poster} alt={"Poster of " + movie.Title}></img>
+                        :
+                        <img src="/assets/movie_placeholder.png" alt={"Poster of " + movie.Title}></img>
+                    }
                     <div className="overlay">
                         <div className="movie-title">{movie.Title}</div>
                         <div className="float-right heart-icon"  onClick={() => props.handleFavouritesClick(movie)}>

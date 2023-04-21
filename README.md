@@ -9,9 +9,14 @@ Movie app based on tutorial for learning purposes. During this project I learned
 ## Description
 
 A React app using the [OMDB API](https://www.omdbapi.com/) displaying movies. CSS Framework is Bootstrap. 
-After finishing the tutorial I have restructured the code and added values for accessibility improvement. 
-I have improved functionality so favourites doesn't include duplicates. I added 
-the movie title on the poster overlay.
+After finishing the tutorial I have made several improvements to the original code according 
+to my preference of what I would like in a movie app. 
+
+I have restructured the code both functionality and component wise. I added values for accessibility improvement 
+using the [WAVE evaluation tool](https://chrome.google.com/webstore/detail/wave-evaluation-tool/jbbplnpkjmmeebjpijfedlgcdilocofh). 
+I have improved functionality so favourites don't include duplicates. I added 
+the movie title on the poster overlay and made the adding and removing favourites functionality on the heart icon. 
+I also made a placeholder picture and added it as an alternative if the poster is empty.
 
 ## Getting Started
 
