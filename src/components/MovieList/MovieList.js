@@ -35,7 +35,7 @@ const MovieList = (props) => {
 
                             heartIcon("#ff5352")
                             :
-                            heartIcon("white")
+                            heartIcon("#f9f6ee")
                         }
                         </div>
                     </div>
