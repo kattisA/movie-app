@@ -2,7 +2,6 @@ import React from 'react';
 
 const MovieList = (props) => {
     const isFavourite = (movie) => {
-        console.log(props.favouriteMovies)
         return !!props.favouriteMovies?.some(m => m.imdbID === movie.imdbID);
     }
     return (
