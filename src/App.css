@@ -1,5 +1,4 @@
-/* 331179
- 793199*/
+
 body {
     background: linear-gradient(110deg, #331179 60%, #793199 60%);
     color: #F9F6EE;
@@ -63,16 +62,6 @@ a:hover {
     background-color: rgba(0, 0, 0, 0.8);
     border-radius: 0;
     padding-top: 0.25rem;
-}
-
-.overlay {
-    position: absolute;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    bottom: 0;
-    opacity: 1;
-    transition: 0.5s ease;
-    padding: 1.3rem;
 }
 
 .heart-icon {
