@@ -22,21 +22,29 @@ const MovieList = (props) => {
     return (
         <>
             {props.movies?.map((movie, index) => (
-                <div className='image-container d-flex justify-content-start m-3' key={index}>
-                    {movie.Poster !== "N/A" ?
-                        <img src={movie.Poster} alt={"Poster of " + movie.Title}></img>
-                        :
-                        <img src="/assets/movie_placeholder.png" alt={"Poster of " + movie.Title}></img>
-                    }
-                    <div className="overlay">
-                        <div className="movie-title">{movie.Title}</div>
-                        <div className="float-right heart-icon"  onClick={() => props.handleFavouritesClick(movie)}>
-                        {isFavourite(movie) ?
-
-                            heartIcon("#ff5352")
+                <div className='d-flex justify-content-start m-3' key={index}>
+                    <div className="card" style={{width: '18rem', color: "black"}}>
+                        {movie.Poster !== "N/A" ?
+                            <img className="card-img-top"  src={movie.Poster} alt={"Poster of " + movie.Title}></img>
                             :
-                            heartIcon("#f9f6ee")
+                            <img className="card-img-top"  src="/assets/movie_placeholder.png" alt={"Poster of " + movie.Title}></img>
                         }
+                            <div className="card-body">
+                                <div className="movie-title">{movie.Title}</div>
+
+                               { /* TODO Add description of the movie in this section issue #3
+                                    <p className="card-text">Some quick example text to build on the card title and make up
+                                    the bulk of the card's content.</p>*/}
+                            </div>
+                        <div className="card-body">
+                            <div className="float-right heart-icon"  onClick={() => props.handleFavouritesClick(movie)}>
+                                {isFavourite(movie) ?
+
+                                    heartIcon("#ff5352")
+                                    :
+                                    heartIcon("#f9f6ee")
+                                }
+                            </div>
                         </div>
                     </div>
                 </div>
