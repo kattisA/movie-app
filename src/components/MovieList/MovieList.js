@@ -23,9 +23,9 @@ const MovieList = (props) => {
         <>
             {props.movies?.map((movie, index) => (
                 <div className='d-flex justify-content-start m-3' key={index}>
-                    <div className="card" style={{width: '18rem', color: "black"}}>
+                    <div className="card border-0" style={{width: '18rem', color: "black"}}>
                         {movie.Poster !== "N/A" ?
-                            <img className="card-img-top"  src={movie.Poster} alt={"Poster of " + movie.Title}></img>
+                            <img className="card-img-top border-0"  src={movie.Poster} alt={"Poster of " + movie.Title}></img>
                             :
                             <img className="card-img-top"  src="/assets/movie_placeholder.png" alt={"Poster of " + movie.Title}></img>
                         }

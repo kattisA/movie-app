@@ -35,19 +35,14 @@ a:hover {
     flex-wrap: nowrap;
 }
 
-.image-container {
-    position: relative;
+.card {
+    box-shadow: rgba(0, 0, 0, 0.5) 0 3px 8px;
+    border-radius: 0;
     transition: transform 0.2s;
 }
 
-.image-container:hover {
-    transform: scale(1.1);
-}
-
-.card {
-    box-shadow: rgba(0, 0, 0, 0.5) 0px 3px 8px;
-    border: none;
-    border-radius: 0;
+.card:hover {
+    transform: scale(1.04);
 }
 
 .card-body {
