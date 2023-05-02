@@ -23,14 +23,14 @@ const MovieList = (props) => {
         <>
             {props.movies?.map((movie, index) => (
                 <div className='d-flex justify-content-start m-3' key={index}>
-                    <div className="card border-0" style={{width: '18rem', color: "black"}}>
+                    <div className="card border-0" style={{width: '18rem'}}>
                         {movie.Poster !== "N/A" ?
-                            <img className="card-img-top border-0"  src={movie.Poster} alt={"Poster of " + movie.Title}></img>
+                            <img className="card-img-top"  src={movie.Poster} alt={"Poster of " + movie.Title}></img>
                             :
                             <img className="card-img-top"  src="/assets/movie_placeholder.png" alt={"Poster of " + movie.Title}></img>
                         }
                             <div className="card-body">
-                                <div className="movie-title">{movie.Title}</div>
+                                <div className="card-title">{movie.Title}</div>
 
                                { /* TODO Add description of the movie in this section issue #3
                                     <p className="card-text">Some quick example text to build on the card title and make up
