@@ -5,12 +5,14 @@ const MovieList = (props) => {
         return !!props.favouriteMovies?.some(m => m.imdbID === movie.imdbID);
     }
 
-    const heartIcon = (color) => {
+    const heartIcon = (fillColor, strokeColor) => {
         return (
             <svg xmlns="http://www.w3.org/2000/svg"
                  width="1.5rem"
                  height="1.5rem"
-                 fill={color}
+                 fill={fillColor}
+                 stroke={strokeColor}
+                 strokeWidth="1"
                  className="bi bi-heart-fill"
                  viewBox="0 0 16 16"
             >
@@ -40,9 +42,9 @@ const MovieList = (props) => {
                             <div className="float-right heart-icon"  onClick={() => props.handleFavouritesClick(movie)}>
                                 {isFavourite(movie) ?
 
-                                    heartIcon("#ff5352")
+                                    heartIcon("#ff5352", "#b23a39")
                                     :
-                                    heartIcon("#f9f6ee")
+                                    heartIcon("#f9f6ee", "#212529")
                                 }
                             </div>
                         </div>

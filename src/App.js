@@ -66,7 +66,7 @@ const App = () => {
         <div className='container-fluid movie-scroll' role="main">
             <div className=" d-flex justify-content-center mt-4 mb-4">
                 <div>
-                    <h1>Movies</h1>
+                    <h1 className="heading">Movies</h1>
                 </div>
                 <SearchBar searchValue={searchValue} setSearchValue={setSearchValue}/>
             </div>
@@ -77,7 +77,7 @@ const App = () => {
                 />
             </div>
             <div className="d-flex justify-content-center mt-4 mb-4">
-                <h2>Favourites</h2>
+                <h2 className="heading">Favourites</h2>
             </div>
             <div className="row">
                 <MovieList movies={favouriteMovies}

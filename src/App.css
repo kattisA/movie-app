@@ -1,6 +1,10 @@
 
 body {
     background: linear-gradient(110deg, #331179 60%, #793199 60%);
+    /*color: #F9F6EE;*/
+}
+
+.heading {
     color: #F9F6EE;
 }
 
@@ -41,30 +45,30 @@ a:hover {
 
 .card {
     box-shadow: rgba(0, 0, 0, 0.5) 0 3px 8px;
-    border-radius: 0;
     transition: transform 0.2s;
 }
 
 .card:hover {
-    transform: scale(1.04);
-}
-
-.card-body {
-    background-color: rgba(0, 0, 0, 0.8);
-    color: #F9F6EE;
+    transform: scale(1.1);
 }
 
 .card-img-top {
     width: 100%;
     height: 20rem;
     object-fit: contain;
-    background-color: rgba(0, 0, 0, 0.8);
     border-radius: 0;
     padding-top: 0.25rem;
 }
 
 .heart-icon {
     cursor: pointer;
+}
+
+/*
+Allowing the stroke to be visible
+ */
+svg:not(:root) {
+    overflow: visible;
 }
 
 /*
