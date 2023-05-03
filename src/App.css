@@ -29,10 +29,14 @@ a:hover {
     background: #4B4453;
 }
 
-.movie-app > .row {
+.movie-scroll > .row {
     overflow-x: auto;
     overflow-y: hidden;
     flex-wrap: nowrap;
+}
+
+.d-flex {
+    gap:1rem;
 }
 
 .card {

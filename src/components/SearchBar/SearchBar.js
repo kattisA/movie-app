@@ -5,7 +5,7 @@ import SearchIcon from './../../icons/search.svg';
 
 const SearchBar = (props) => {
     return (
-        <div className={"col col-sm-4 form-group search-bar"}>
+        <div className={" form-group search-bar"}>
             <img className="form-control-feedback" src={SearchIcon} alt="Search icon" />
             <input
                 className="form-control"

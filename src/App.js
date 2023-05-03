@@ -47,7 +47,7 @@ const App = () => {
 
     const toggleFavouriteMovie = (movie) => {
         const isFavourite = !!favouriteMovies?.some(m => m.imdbID === movie.imdbID);
-        if(isFavourite){
+        if (isFavourite) {
             const newFavouriteList = favouriteMovies.filter(
                 (favourite) => favourite.imdbID !== movie.imdbID
             );
@@ -63,9 +63,9 @@ const App = () => {
     }
 
     return (
-        <div className='container-fluid movie-app' role="main">
-            <div className="row d-flex align-items-center mt-4 mb-4">
-                <div className="col">
+        <div className='container-fluid movie-scroll' role="main">
+            <div className=" d-flex justify-content-center mt-4 mb-4">
+                <div>
                     <h1>Movies</h1>
                 </div>
                 <SearchBar searchValue={searchValue} setSearchValue={setSearchValue}/>
@@ -76,10 +76,8 @@ const App = () => {
                            handleFavouritesClick={toggleFavouriteMovie}
                 />
             </div>
-            <div className="row d-flex align-items-center mt-4 mb-4">
-                <div className="col">
-                    <h2>Favourites</h2>
-                </div>
+            <div className="d-flex justify-content-center mt-4 mb-4">
+                <h2>Favourites</h2>
             </div>
             <div className="row">
                 <MovieList movies={favouriteMovies}
@@ -87,7 +85,7 @@ const App = () => {
                            handleFavouritesClick={toggleFavouriteMovie}
                 />
             </div>
-            <div className="row d-flex justify-content-center">
+            <div className="d-flex justify-content-center mt-4 mb-4">
                 <a href="https://github.com/kattisA">Created by Kattis</a>
             </div>
         </div>
