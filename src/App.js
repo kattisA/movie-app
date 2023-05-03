@@ -1,97 +1,89 @@
-import React, {useState, useEffect} from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
-import MovieList from "./components/MovieList/MovieList";
-import SearchBar from "./components/SearchBar/SearchBar";
+import React, { useState } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
+import MovieList from "./components/MovieList";
 
 const App = () => {
-    const [movies, setMovies] = useState([]);
-    const [searchValue, setSearchValue] = useState('Star Wars');
-    const [favouriteMovies, setFavouriteMovies] = useState([]);
+  // Declare state variables using the useState hook
+  const [movies, setMovies] = useState([]);
+  const [favouriteMovies, setFavouriteMovies] = useState([]);
 
-    const getMovieRequest = async (searchValue) => {
-        const url = `http://www.omdbapi.com/?s=${searchValue}&apikey=5a0f2c9d`;
+  // Function to add a movie to the favourites list
+  const addFavouriteMovie = (movie) => {
+    const newFavouriteMovies = [...favouriteMovies, movie];
+    setFavouriteMovies(newFavouriteMovies);
+  };
 
-        const response = await fetch(url);
-        const responseJson = await response.json();
-
-        if (responseJson.Search) {
-            setMovies(responseJson.Search)
-        }
-    }
-
-    useEffect(() => {
-        getMovieRequest(searchValue);
-    }, [searchValue]);
-
-    useEffect(() => {
-        const movieFavourites = JSON.parse(
-            localStorage.getItem('movie-favourites'));
-
-        if (movieFavourites) {
-            let uniqueMovieFavourites = movieFavourites.filter(
-                (value, index, array) => array.findIndex(
-                    (v) => v.imdbID === value.imdbID) === index);
-            setFavouriteMovies(uniqueMovieFavourites);
-        }
-    }, []);
-
-    const saveToLocalStorage = (items) => {
-        localStorage.setItem('movie-favourites', JSON.stringify(items));
-    }
-
-    function setFavouriteAndSave(list) {
-        setFavouriteMovies(list);
-        saveToLocalStorage(list);
-    }
-
-    const toggleFavouriteMovie = (movie) => {
-        const isFavourite = !!favouriteMovies?.some(m => m.imdbID === movie.imdbID);
-        if(isFavourite){
-            const newFavouriteList = favouriteMovies.filter(
-                (favourite) => favourite.imdbID !== movie.imdbID
-            );
-
-            setFavouriteAndSave(newFavouriteList);
-        } else {
-            let newFavouriteList = [...favouriteMovies, movie];
-            let uniqueList = newFavouriteList.filter(
-                (value, index, array) => array.findIndex(
-                    (v) => v.imdbID === value.imdbID) === index);
-            setFavouriteAndSave(uniqueList);
-        }
-    }
-
-    return (
-        <div className='container-fluid movie-app' role="main">
-            <div className="row d-flex align-items-center mt-4 mb-4">
-                <div className="col">
-                    <h1>Movies</h1>
-                </div>
-                <SearchBar searchValue={searchValue} setSearchValue={setSearchValue}/>
-            </div>
-            <div className='row'>
-                <MovieList movies={movies}
-                           favouriteMovies={favouriteMovies}
-                           handleFavouritesClick={toggleFavouriteMovie}
-                />
-            </div>
-            <div className="row d-flex align-items-center mt-4 mb-4">
-                <div className="col">
-                    <h2>Favourites</h2>
-                </div>
-            </div>
-            <div className="row">
-                <MovieList movies={favouriteMovies}
-                           favouriteMovies={favouriteMovies}
-                           handleFavouritesClick={toggleFavouriteMovie}
-                />
-            </div>
-            <div className="row d-flex justify-content-center">
-                <a href="https://github.com/kattisA">Created by Kattis</a>
-            </div>
-        </div>
+  // Function to remove a movie from the favourites list
+  const removeFavouriteMovie = (movie) => {
+    const newFavouriteMovies = favouriteMovies.filter(
+      (favourite) => favourite.imdbID !== movie.imdbID
     );
+    setFavouriteMovies(newFavouriteMovies);
+  };
+
+    // Function to handle a click on the favourites button
+  const handleFavouritesClick = (movie) => {
+    const alreadyAdded = favouriteMovies.some(
+      (favourite) => favourite.imdbID === movie.imdbID
+    );
+
+    // If it's already added, remove it from the favourites list
+    if (alreadyAdded) {
+      removeFavouriteMovie(movie);
+          // If it's not added yet, add it to the favourites list
+    } else {
+      addFavouriteMovie(movie);
+    }
+  };
+
+ // Function to fetch movie data from the OMDb API
+  const getMovieRequest = async (searchValue) => {
+    const url = `http://www.omdbapi.com/?s=${searchValue}&apikey=5a0f2c9d&plot=short`;
+
+    const response = await fetch(url);
+    const responseJson = await response.json();
+
+    if (responseJson.Search) {
+     // If the API response contains movie data, set the movies state variable
+      const moviesWithDescriptions = await Promise.all(
+        responseJson.Search.map(async (movie) => {
+          const descriptionUrl = `http://www.omdbapi.com/?i=${movie.imdbID}&apikey=5a0f2c9d&plot=short`;
+          const descriptionResponse = await fetch(descriptionUrl);
+          const descriptionResponseJson = await descriptionResponse.json();
+
+          if (descriptionResponseJson.Plot) {
+            movie.description = descriptionResponseJson.Plot;
+          } else {
+            movie.description = "No description available";
+          }
+
+          return movie;
+        })
+      );
+
+      // Update the state variable for movies with the list of movies and their descriptions
+      setMovies(moviesWithDescriptions);
+    }
+  };
+
+  // Render the MovieList component and pass it the necessary props
+  return (
+    <div className="container-fluid movie-app">
+      <div className="row d-flex align-items-center mt-4 mb-4">
+        <MovieList
+          movies={movies}
+          favouriteMovies={favouriteMovies}
+          handleFavouritesClick={handleFavouritesClick}
+          getMovieRequest={getMovieRequest}
+          showPlot={true}
+        />
+      </div>
+      <div className="row d-flex justify-content-center">
+        <a href="https://github.com/kattisA">Created by Kattis</a>
+      </div>
+    </div>
+  );
 };
 
 export default App;
