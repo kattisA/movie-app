@@ -1,5 +1,7 @@
 import React from 'react';
+import MovieDetails from "../MovieDetails/MovieDetails";
 
+//TODO Check this https://devpress.csdn.net/react/62ec16fe19c509286f416398.html for the movie details
 const MovieList = (props) => {
     const isFavourite = (movie) => {
         return !!props.favouriteMovies?.some(m => m.imdbID === movie.imdbID);
@@ -47,6 +49,7 @@ const MovieList = (props) => {
                                     heartIcon("#f9f6ee", "#212529")
                                 }
                             </div>
+                            <MovieDetails id={movie.imdbID} />
                         </div>
                     </div>
                 </div>
