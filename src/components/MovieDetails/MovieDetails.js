@@ -7,7 +7,12 @@ function MovieDetails(props) {
         fetch(`http://www.omdbapi.com/?i=${props.id}&apikey=5a0f2c9d`)
             .then(res => res.json())
             .then(data => {
-                setMovieDetail({rating: data.imdbRating, description: data.Plot});
+                setMovieDetail(
+                    {
+                        rating: data.imdbRating,
+                        description: data.Plot,
+                        year: data.Year
+                    });
             });
     }, [props.id]);
 
@@ -16,11 +21,14 @@ function MovieDetails(props) {
             <div>
                 {movieDetail ? (
                     <>
-                        <p>Movie Rating: {movieDetail.rating}</p>
-                        <p>Description: {movieDetail.description}</p>
+                        <div className="d-flex justify-content-between p-2">
+                            <span className="ratingBadge badge badge-pill badge-light ">Rating {movieDetail.rating}</span>
+                            <span className="yearBadge badge badge-pill badge-light">{movieDetail.year}</span>
+                        </div>
+                        <div className="card-text">{movieDetail.description}</div>
                     </>
                 ) : (
-                    <p>Loading...</p>
+                    <></>
                 )}
             </div>
         </div>

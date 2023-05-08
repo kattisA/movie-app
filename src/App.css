@@ -65,6 +65,17 @@ a:hover {
 }
 
 /*
+Badge styling
+ */
+.yearBadge {
+    background-color: #c38fd7;;
+}
+
+.ratingBadge {
+    background-color: #8e9ecc;
+}
+
+/*
 Allowing the stroke to be visible
  */
 svg:not(:root) {

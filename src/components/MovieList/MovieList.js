@@ -39,6 +39,7 @@ const MovieList = (props) => {
                                { /* TODO Add description of the movie in this section issue #3
                                     <p className="card-text">Some quick example text to build on the card title and make up
                                     the bulk of the card's content.</p>*/}
+                                <MovieDetails id={movie.imdbID} />
                             </div>
                         <div className="card-body">
                             <div className="float-right heart-icon"  onClick={() => props.handleFavouritesClick(movie)}>
@@ -49,7 +50,6 @@ const MovieList = (props) => {
                                     heartIcon("#f9f6ee", "#212529")
                                 }
                             </div>
-                            <MovieDetails id={movie.imdbID} />
                         </div>
                     </div>
                 </div>
