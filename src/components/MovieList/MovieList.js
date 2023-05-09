@@ -1,7 +1,6 @@
 import React from 'react';
 import MovieDetails from "../MovieDetails/MovieDetails";
 
-//TODO Check this https://devpress.csdn.net/react/62ec16fe19c509286f416398.html for the movie details
 const MovieList = (props) => {
     const isFavourite = (movie) => {
         return !!props.favouriteMovies?.some(m => m.imdbID === movie.imdbID);
@@ -35,14 +34,10 @@ const MovieList = (props) => {
                         }
                             <div className="card-body">
                                 <div className="card-title">{movie.Title}</div>
-
-                               { /* TODO Add description of the movie in this section issue #3
-                                    <p className="card-text">Some quick example text to build on the card title and make up
-                                    the bulk of the card's content.</p>*/}
                                 <MovieDetails id={movie.imdbID} />
                             </div>
-                        <div className="card-body">
-                            <div className="float-right heart-icon"  onClick={() => props.handleFavouritesClick(movie)}>
+                        <div className="card-body d-flex align-items-center">
+                            <div className=" heart-icon mr-2 mb-0"  onClick={() => props.handleFavouritesClick(movie)}>
                                 {isFavourite(movie) ?
 
                                     heartIcon("#ff5352", "#b23a39")
