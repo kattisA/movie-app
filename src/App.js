@@ -8,20 +8,29 @@ const App = () => {
     const [movies, setMovies] = useState([]);
     const [searchValue, setSearchValue] = useState('Star Wars');
     const [favouriteMovies, setFavouriteMovies] = useState([]);
+    const [errorMessage, setErrorMessage] = useState('');
 
-    const getMovieRequest = async (searchValue) => {
-        const url = `http://www.omdbapi.com/?s=${searchValue}&apikey=5a0f2c9d`;
+    const apiKey = '5a0f2c9d';
 
-        const response = await fetch(url);
-        const responseJson = await response.json();
+    const fetchMovies = async (searchValue) => {
+        try {
+            const url = `http://www.omdbapi.com/?s=${searchValue}&apikey=${apiKey}`;
 
-        if (responseJson.Search) {
-            setMovies(responseJson.Search)
+            const response = await fetch(url);
+            const movieData = await response.json();
+
+            if (movieData.Search) {
+                setMovies(movieData.Search)
+            }
+        } catch (error) {
+            setErrorMessage('An error occurred while fetching movies from OMDB');
+            setMovies([]);
         }
+
     }
 
     useEffect(() => {
-        getMovieRequest(searchValue);
+        fetchMovies(searchValue);
     }, [searchValue]);
 
     useEffect(() => {
@@ -36,13 +45,10 @@ const App = () => {
         }
     }, []);
 
-    const saveToLocalStorage = (items) => {
-        localStorage.setItem('movie-favourites', JSON.stringify(items));
-    }
 
     function setFavouriteAndSave(list) {
         setFavouriteMovies(list);
-        saveToLocalStorage(list);
+        localStorage.setItem('movie-favourites', JSON.stringify(list));
     }
 
     const toggleFavouriteMovie = (movie) => {
@@ -64,20 +70,27 @@ const App = () => {
 
     return (
         <div className='container-fluid movie-scroll' role="main">
-            <div className=" d-flex justify-content-center mt-4 mb-4">
+            <div className="d-flex justify-content-center my-5">
                 <div>
-                    <h1 className="heading">Movies</h1>
+                    <h1 className="heading">Movie Search</h1>
                 </div>
                 <SearchBar searchValue={searchValue} setSearchValue={setSearchValue}/>
+
             </div>
+            {errorMessage && (
+                <div className="alert alert-danger d-flex justify-content-center" role="alert">
+                    {errorMessage}
+                </div>
+            )}
             <div className='row'>
+
                 <MovieList movies={movies}
                            favouriteMovies={favouriteMovies}
                            handleFavouritesClick={toggleFavouriteMovie}
                 />
             </div>
-            <div className="d-flex justify-content-center mt-4 mb-4">
-                <h2 className="heading">Favourites</h2>
+            <div className="d-flex justify-content-center my-4">
+                <h2 className="heading">My favourite movies</h2>
             </div>
             <div className="row">
                 <MovieList movies={favouriteMovies}
@@ -85,7 +98,7 @@ const App = () => {
                            handleFavouritesClick={toggleFavouriteMovie}
                 />
             </div>
-            <div className="d-flex justify-content-center mt-4 mb-4">
+            <div className="d-flex justify-content-center my-4">
                 <a href="https://github.com/kattisA">Created by Kattis</a>
             </div>
         </div>
