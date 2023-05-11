@@ -1,22 +1,35 @@
-# Project Title
+# Movie Search app
 
-Movie app based on tutorial for learning purposes. During this project I learned more about:
+Movie search app retrieving information from OMBD API. The application is developed for learning purposes. 
+During this project I learned more about:
 * Using API:s and more specifically the OMDB API
+* More understanding about fetching data and rendering it in React
 * React application in general
 * React hooks
 * Local storage for desktop applications
+* Bootstrap
+* Website accessibility
+
+## Usage
+Type a movie title in the search bar. If you want to add a movie to your favourites movies do so by clicking on the heart icon.
+The app will only store your favourite movies locally.
 
 ## Description
 
-A React app using the [OMDB API](https://www.omdbapi.com/) displaying movies. CSS Framework is Bootstrap. 
-After finishing the tutorial I have made several improvements to the original code according 
-to my preference of what I would like in a movie app. 
+A React app using the [OMDB API](https://www.omdbapi.com/) displaying movies after search. CSS Framework is Bootstrap.
 
-I have restructured the code both functionality and component wise. I added values for accessibility improvement 
-using the [WAVE evaluation tool](https://chrome.google.com/webstore/detail/wave-evaluation-tool/jbbplnpkjmmeebjpijfedlgcdilocofh). 
-I have improved functionality so favourites don't include duplicates. I added 
-the movie title on the poster overlay and made the adding and removing favourites functionality on the heart icon. 
-I also made a placeholder picture and added it as an alternative if the poster is empty.
+You can only add a movie once in the favourites list, so no duplicates.  The fetch code has error handling 
+to avoid any bad experience for the user.
+
+Some movies will not have a poster or fields like description and rating. Try to search for "Ironman" and see how the cards looks like. 
+I  made a placeholder picture with Canva if a poster is missing.
+
+I have used the Bootstrap utility CSS classes as much as possible to learn more and to keep the site more cohesive and responsive.
+
+## Accessibility and design
+I added values for accessibility improvement using the [WAVE evaluation tool](https://chrome.google.com/webstore/detail/wave-evaluation-tool/jbbplnpkjmmeebjpijfedlgcdilocofh). 
+The colors are inspected for their contrast ratio to provide a nice experience. I have created a simple design 
+using mostly Bootstrap CSS classes.
 
 ## Getting Started
 
@@ -52,12 +65,14 @@ npm run build
 
 ## Authors
 
-Based on the tutorial of Chris Blakey.
-This repository belongs to Katarina Lejonlid.
+This repository is written by and belongs to Katarina Lejonlid.
 
 ## Acknowledgments
 
-This awesome tutorial from Chris Blakey and the repository. Check it out!
-* [React movie app tutorial](https://www.freecodecamp.org/news/react-movie-app-tutorial/)
+Here are some helpful links for developing the movie search app.
+* Awesome movie app tutorial from Chris Blakey [React movie app tutorial](https://www.freecodecamp.org/news/react-movie-app-tutorial/)
 * [Chris Blakey repository](https://github.com/chrisblakely01/react-movie-app/blob/main/src/components/MovieList.js)
 * [OMDB API site](https://www.omdbapi.com/)
+* [Bootstrap Docs](https://getbootstrap.com/docs/4.0)
+* [Canva](https://www.canva.com/sv_se/)
+* [Contrast Ration](https://www.siegemedia.com/contrast-ratio)
