@@ -6,12 +6,12 @@ function MovieDetails(props) {
     useEffect(() => {
         fetch(`http://www.omdbapi.com/?i=${props.id}&apikey=5a0f2c9d`)
             .then(res => res.json())
-            .then(data => {
+            .then(movieData => {
                 setMovieDetail(
                     {
-                        rating: data.imdbRating,
-                        description: data.Plot,
-                        year: data.Year
+                        rating: movieData.imdbRating,
+                        description: movieData.Plot,
+                        year: movieData.Year
                     });
             });
     }, [props.id]);

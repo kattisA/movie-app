@@ -33,11 +33,11 @@ const MovieList = (props) => {
                             <img className="card-img-top"  src="/assets/movie_placeholder.png" alt={"Poster of " + movie.Title}></img>
                         }
                             <div className="card-body">
-                                <div className="card-title">{movie.Title}</div>
+                                <div className="card-title title">{movie.Title}</div>
                                 <MovieDetails id={movie.imdbID} />
                             </div>
-                        <div className="card-body d-flex align-items-center">
-                            <div className=" heart-icon mr-2 mb-0"  onClick={() => props.handleFavouritesClick(movie)}>
+                        <div className="card-body footer right">
+                            <div className=" heart-icon float-right mr-2 mb-0"  onClick={() => props.handleFavouritesClick(movie)}>
                                 {isFavourite(movie) ?
 
                                     heartIcon("#ff5352", "#b23a39")

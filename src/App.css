@@ -1,7 +1,8 @@
-
+/*
+General
+ */
 body {
     background: linear-gradient(110deg, #331179 60%, #793199 60%);
-    /*color: #F9F6EE;*/
 }
 
 .heading {
@@ -40,8 +41,12 @@ a:hover {
 }
 
 .d-flex {
-    gap:1rem;
+    gap: 1rem;
 }
+
+/*
+ Card
+ */
 
 .card {
     box-shadow: rgba(0, 0, 0, 0.5) 0 3px 8px;
@@ -62,6 +67,12 @@ a:hover {
 
 .heart-icon {
     cursor: pointer;
+}
+.footer {
+    max-height: 4rem;
+}
+.title {
+    min-height: 3rem;
 }
 
 /*
