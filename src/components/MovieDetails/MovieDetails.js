@@ -33,10 +33,17 @@ function MovieDetails(props) {
                 {movieDetail ? (
                     <>
                         <div className="d-flex justify-content-between p-2">
-                            <span className="ratingBadge badge badge-pill badge-light ">Rating {movieDetail.rating}</span>
+                            {movieDetail.rating !== "N/A" ?
+                                <span
+                                    className="ratingBadge badge badge-pill badge-light ">Rating {movieDetail.rating}</span> :
+                                <></>
+                            }
                             <span className="yearBadge badge badge-pill badge-light">{movieDetail.year}</span>
                         </div>
-                        <div className="card-text">{movieDetail.description}</div>
+                        {movieDetail.description !== "N/A" ?
+                            <div className="card-text">{movieDetail.description}</div> :
+                            <div className="font-italic">No description available.</div>
+                        }
                     </>
                 ) : (
                     <></>

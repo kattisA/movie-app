@@ -30,7 +30,7 @@ const MovieList = (props) => {
                         {movie.Poster !== "N/A" ?
                             <img className="card-img-top"  src={movie.Poster} alt={"Poster of " + movie.Title}></img>
                             :
-                            <img className="card-img-top"  src="/assets/movie_placeholder.png" alt={"Poster of " + movie.Title}></img>
+                            <img className="card-img-top"  src="/assets/movie_placeholder.png" alt="A placeholder photo with a movie projector"></img>
                         }
                             <div className="card-body">
                                 <div className="card-title title">{movie.Title}</div>
