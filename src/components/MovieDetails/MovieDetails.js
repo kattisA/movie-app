@@ -3,18 +3,29 @@ import React, { useState, useEffect } from 'react';
 function MovieDetails(props) {
     const [movieDetail, setMovieDetail] = useState(null);
 
+    const fetchMovieDetails = async (props) => {
+        try {
+            const url = `http://www.omdbapi.com/?i=${props.id}&apikey=${props.apiKey}`;
+            const response = await fetch(url);
+            const movieData = await response.json();
+
+            if(movieData) {
+                setMovieDetail({
+                    rating: movieData.imdbRating,
+                    description: movieData.Plot,
+                    year: movieData.Year
+                });
+            }
+
+        } catch(error) {
+            console.log(error);
+        }
+
+    }
+
     useEffect(() => {
-        fetch(`http://www.omdbapi.com/?i=${props.id}&apikey=5a0f2c9d`)
-            .then(res => res.json())
-            .then(movieData => {
-                setMovieDetail(
-                    {
-                        rating: movieData.imdbRating,
-                        description: movieData.Plot,
-                        year: movieData.Year
-                    });
-            });
-    }, [props.id]);
+        fetchMovieDetails(props)
+    }, [props.id, props.apiKey]);
 
     return (
         <div>

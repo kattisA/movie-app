@@ -34,7 +34,7 @@ const MovieList = (props) => {
                         }
                             <div className="card-body">
                                 <div className="card-title title">{movie.Title}</div>
-                                <MovieDetails id={movie.imdbID} />
+                                <MovieDetails id={movie.imdbID} apiKey={props.apiKey}/>
                             </div>
                         <div className="card-body footer right">
                             <div className=" heart-icon float-right mr-2 mb-0"  onClick={() => props.handleFavouritesClick(movie)}>

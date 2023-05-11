@@ -87,6 +87,7 @@ const App = () => {
                 <MovieList movies={movies}
                            favouriteMovies={favouriteMovies}
                            handleFavouritesClick={toggleFavouriteMovie}
+                           apiKey={apiKey}
                 />
             </div>
             <div className="d-flex justify-content-center my-4">
@@ -96,6 +97,7 @@ const App = () => {
                 <MovieList movies={favouriteMovies}
                            favouriteMovies={favouriteMovies}
                            handleFavouritesClick={toggleFavouriteMovie}
+                           apiKey={apiKey}
                 />
             </div>
             <div className="d-flex justify-content-center my-4">
