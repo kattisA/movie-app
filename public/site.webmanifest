@@ -1,6 +1,6 @@
 {
-    "name": "",
-    "short_name": "",
+    "name": "My Movie App",
+    "short_name": "Movie App",
     "icons": [
         {
             "src": "/android-chrome-96x96.png",
