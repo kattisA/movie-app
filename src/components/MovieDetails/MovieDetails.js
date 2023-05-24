@@ -25,7 +25,7 @@ function MovieDetails(props) {
 
     useEffect(() => {
         fetchMovieDetails(props)
-    }, [props.id, props.apiKey]);
+    }, [props]);
 
     return (
         <div>
