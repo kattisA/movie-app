@@ -5,7 +5,7 @@ function MovieDetails(props) {
 
     const fetchMovieDetails = async (props) => {
         try {
-            const url = `http://www.omdbapi.com/?i=${props.id}&apikey=${props.apiKey}`;
+            const url = `https://www.omdbapi.com/?i=${props.id}&apikey=${props.apiKey}`;
             const response = await fetch(url);
             const movieData = await response.json();
 
