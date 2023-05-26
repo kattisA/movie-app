@@ -10,6 +10,10 @@ During this project I learned more about:
 * Bootstrap
 * Website accessibility
 
+## Visit 
+
+[The site is live](https://kattisa.github.io/movie-app/) at Github pages.
+
 ## Usage
 Type a movie title in the search bar. If you want to add a movie to your favourites movies do so by clicking on the heart icon.
 The app will only store your favourite movies locally.
